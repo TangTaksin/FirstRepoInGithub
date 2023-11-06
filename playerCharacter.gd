@@ -27,6 +27,7 @@ func PlayerAnimation() -> void:
 		elif velocity.x == 0:
 			animation_sprite.animation = "idle"
 	else:
+		animation_sprite.flip_h = (velocity.x < 0)  # Flip sprite when moving
 		animation_sprite.animation = "jump"
 
 
@@ -38,7 +39,6 @@ func Movement():
 	else:
 		# Decelerate when there's no input.
 		velocity.x = move_toward(velocity.x, 0, SPEED)
-
 	move_and_slide()
 
 
